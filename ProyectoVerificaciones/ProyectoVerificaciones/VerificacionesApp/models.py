@@ -1,6 +1,6 @@
 
 from django.template.defaultfilters import slugify
-from ProyectoVerificaciones.settings import MAPBOX_ACCESS_TOKEN
+
 
 from django.db import models
 
@@ -31,6 +31,7 @@ class Evento(models.Model):
     areaPimetAfectada = models.CharField(max_length=200,null=False, blank=False)
     lat = models.FloatField(null=False, blank=False)
     long = models.FloatField(null=False, blank=False)
+    #puntoRepresentativo = models.PointField()
 
     def __str__(self):
         return f"{self.fechaDelEvento} --  {self.tipoEvento} -- {self.localidadAfectada} -- {self.nombreFuente}"
