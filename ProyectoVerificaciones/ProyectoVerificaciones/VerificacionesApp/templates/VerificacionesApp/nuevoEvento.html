@@ -1,0 +1,153 @@
+{% extends "VerificacionesApp/base.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block title %}
+<title>Nuevo Arbol &mdash; Arbolado Urbano UNLa</title>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="site-section"  data-aos="fade">
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-7">
+
+           
+         
+   
+
+            <div class="row mb-5">
+              <div class="col-12 ">
+                <h2 class="site-section-heading text-center">Censar nuevo árbol</h2>
+
+                {% if mensajeError == "¡¡¡ El formulario no ha sido válido, verifique enviar una imagen como mínimo... !!!"  %}
+                    <h6 style="color:crimson" class="text-center">{{mensajeError}}</h6>
+                {% else %}
+                    <h6 style="color:chartreuse" class="text-center">{{mensajeError}}</h6>
+                {% endif %}
+
+
+
+               
+              </div>
+
+
+              
+                
+                 
+  
+                
+                
+            
+
+
+
+            </div>
+          </div>
+
+
+         
+
+        </div>
+        
+     
+
+
+
+
+        <div class="row">
+          <div class="col-lg-8 mb-5">
+
+
+           
+
+
+            <form  action="" method="POST" enctype="multipart/form-data" >  <!--Cuidado con la info automatica-->
+
+              {% csrf_token %}
+
+             
+
+                    {{ miFormulario.as_p }}
+              
+              
+
+
+                   {{ formset.management_form }}
+                    {% for form in formset %}
+
+                    {{ form.as_p }}
+                    
+                    {% endfor %}
+
+            
+    
+      
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Enviar datos" class="btn btn-primary py-2 px-4 text-white">
+                </div>
+              </div>
+            
+
+              
+         
+
+
+            </form>
+
+
+
+        
+
+            
+          </div>
+
+          
+          
+    
+    
+ {% endblock %}
+
+
+
+
+
+
+        <!--
+          <script>
+            
+            
+
+            
+
+            
+            mapboxgl.accessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+            
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [-64.03, -35.11],
+            zoom: 9,
+           
+           
+            });
+
+            
+
+               
+              </script>
+
+
+-->

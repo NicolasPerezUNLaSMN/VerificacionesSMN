@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 from django.forms import modelformset_factory
 from .models import Evento, Imagen
-from .forms import ImageForm
+from .forms import ImageForm, EventoFormulario
+
+from ProyectoVerificaciones.settings import MAPBOX_ACCESS_TOKEN
 
 # Create your views here.
 
@@ -29,29 +31,27 @@ def nuevoEvento(request):
     if request.method == "POST":
 
       formset = ImageFormSet(request.POST, request.FILES, queryset=Imagen.objects.none())
-
+      miFormulario = EventoFormulario(request.POST)
       
       
       #Si el formulario se lleno bien
       if formset.is_valid():
           
-    
-          evento = Evento()
+          i = miFormulario.cleaned_data
+          
+          evento = Evento(descripcion=i["descripcion"],
+                          linkDireccion=i["linkDireccion"],
+                          localidadAfectada=i["localidadAfectada"],
+                          tipoEvento=i["tipoEvento"],
+                          fechaDelEvento=i["fechaDelEvento"],
+                          nombreFuente=i["nombreFuente"],
+                          color=i["color"],
+                          tipo=i["tipo"],
+                          areaPimetAfectada=i["areaPimetAfectada"],
+                          lat=i["lat"],
+                          long=i["long"])
 
-          evento.descripcion  = request.POST['descripcion']
-          evento.linkDireccion  = request.POST['linkDireccion']
-          evento.localidadAfectada  = request.POST['localidadAfectada']
-          evento.tipoEvento  = request.POST['tipoEvento']
-          evento.fechaDelEvento  = request.POST['fechaDelEvento']
           
-          evento.nombreFuente  = request.POST['nombreFuente']
-          
-          evento.color  = request.POST['color']
-          evento.tipo  = request.POST['tipo']
-          
-          evento.areaPimetAfectada  = request.POST['areaPimetAfectada']
-          evento.lat   = request.POST['lat']
-          evento.long  = request.POST['long']
 
           evento.save()
           
@@ -77,5 +77,6 @@ def nuevoEvento(request):
       
 
     formset = ImageFormSet(queryset=Imagen.objects.none())
-
-    return render(request, "VerificacionesApp/nuevoEvento.html",  {'formset': formset, 'mensajeError':mensajeError})
+    miFormulario = EventoFormulario()
+    
+    return render(request, "VerificacionesApp/nuevoEvento.html",  {'formset': formset, "miFormulario":miFormulario,'mensajeError':mensajeError, "MAPBOX_ACCESS_TOKEN":MAPBOX_ACCESS_TOKEN})
