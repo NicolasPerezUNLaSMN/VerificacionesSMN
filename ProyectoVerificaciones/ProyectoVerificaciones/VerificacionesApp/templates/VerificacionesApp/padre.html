@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    {% block titulo %}
+   
+    {% endblock %}
+   
+
+    
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'VerificacionesApp/plugins/fullcalendar/css/fullcalendar.min.css' %}" rel="stylesheet">
+    <link href="{% static 'VerificacionesApp/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}" rel="stylesheet">
+
+    <!-- Page plugins css -->
+    <link href="{% static 'VerificacionesApp/plugins/clockpicker/dist/jquery-clockpicker.min.css' %}" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="{% static 'VerificacionesApp/plugins/jquery-asColorPicker-master/css/asColorPicker.css' %}" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="{% static 'VerificacionesApp/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+    <!-- Daterange picker plugins css -->
+    <link href="{% static 'VerificacionesApp/plugins/timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet">
+    <link href="{% static 'VerificacionesApp/plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">
+    
+    <!-- Pignose Calender -->
+    <link href="{% static 'VerificacionesApp/plugins/pg-calendar/css/pignose.calendar.min.css' %}" rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="{% static 'VerificacionesApp/plugins/chartist/css/chartist.min.css' %}">
+    <link rel="stylesheet" href="{% static 'VerificacionesApp/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'VerificacionesApp/css/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'VerificacionesApp/plugins/summernote/dist/summernote.css' %}" rel="stylesheet">
+
+
+
+    <!-- Por si necesito css o js particular en las plantillas heredadas-->
+    {% block extra_css %}
+    {% endblock %}
+    
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+
+            https://wmail.smn.gov.ar/skins/outlook/skin/images/login.jpg
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+               
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">    
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                
+                
+                
+
+
+
+
+
+
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ************
+        ***********************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">           
+            <div class="nk-nav-scroll">
+                
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+        
+        <!--**********************************
+            Contenido dinamico
+        ***********************************-->
+        <div class="content-body">
+
+            {% block contenido %}
+            {% endblock %}  
+            
+        </div>
+        <!--**********************************
+            cierra el contenido dinamico
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Desarrollado por y para el SMN - 2022. Plantilla de: <a href="https://themeforest.net/user/quixlab">quixlab</a> </p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="{% static 'VerificacionesApp/plugins/common/common.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/js/custom.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/js/settings.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/js/gleek.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/js/styleSwitcher.js' %}"></script>
+
+    <!-- Chartjs -->
+    <script src="{% static 'VerificacionesApp/plugins/chart.js/Chart.bundle.min.js' %}"></script>
+    <!-- Circle progress -->
+    <script src="{% static 'VerificacionesApp/plugins/circle-progress/circle-progress.min.js' %}"></script>
+    <!-- Datamap -->
+    <script src="{% static 'VerificacionesApp/plugins/d3v3/index.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/topojson/topojson.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/datamaps/datamaps.world.min.js' %}"></script>
+    <!-- Morrisjs -->
+    <script src="{% static 'VerificacionesApp/plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/morris/morris.min.js' %}"></script>
+    <!-- Pignose Calender -->
+    <script src="{% static 'VerificacionesApp/plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/pg-calendar/js/pignose.calendar.min.js' %}"></script>
+    <!-- ChartistJS -->
+    <script src="{% static 'VerificacionesApp/plugins/chartist/js/chartist.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
+
+
+
+    <script src="{% static 'VerificacionesApp/js/dashboard/dashboard-1.js' %}"></script>
+
+
+
+   
+    <script src="{% static 'VerificacionesApp/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js' %}"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="{% static 'VerificacionesApp//plugins/clockpicker/dist/jquery-clockpicker.min.js' %}"></script>
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="{% static 'VerificacionesApp/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js' %}"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="{% static 'VerificacionesApp/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="{% static 'VerificacionesApp/plugins/timepicker/bootstrap-timepicker.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+    <script src="{% static 'VerificacionesApp/js/plugins-init/form-pickers-init.js' %}"></script>
+
+        <!-- Editor texto-->
+    <script src="{% static 'VerificacionesApp/plugins/summernote/dist/summernote.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/summernote/dist/summernote-init.js' %}"></script>
+
+    <!-- menu-->
+    <script src="{% static 'VerificacionesApp/plugins/jqueryui/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/plugins/fullcalendar/js/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'VerificacionesApp/js/plugins-init/fullcalendar-init.js' %}"></script>
+    
+
+</body>
+
+</html>

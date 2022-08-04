@@ -1,5 +1,6 @@
 
 from django.template.defaultfilters import slugify
+from datetime import datetime
 
 
 from django.db import models
@@ -38,7 +39,7 @@ class Evento(models.Model):
     
     
 def get_image_filename(instance, filename):
-    title =  'titulo'
+    title =  datetime.now()
     slug = slugify(title)
     return "imagenesEventos/%s-%s" % (slug, filename)  
     

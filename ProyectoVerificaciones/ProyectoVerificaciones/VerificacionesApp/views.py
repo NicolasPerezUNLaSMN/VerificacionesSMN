@@ -35,7 +35,7 @@ def nuevoEvento(request):
       
       
       #Si el formulario se lleno bien
-      if formset.is_valid():
+      if formset.is_valid() and miFormulario.is_valid():
           
           i = miFormulario.cleaned_data
           

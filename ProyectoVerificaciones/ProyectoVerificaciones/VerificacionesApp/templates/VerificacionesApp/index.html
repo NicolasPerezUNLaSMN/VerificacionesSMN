@@ -1,54 +1,15 @@
-{% extends "VerificacionesApp/base.html" %}
+{% extends "VerificacionesApp/padre.html" %}
 
 {% load static %}
 
 
-{% block title %}
-<title>inicio &mdash; Arbolado Urbano UNLa</title>
+{% block titulo %}
+<title>Inicio &mdash; </title>
 {% endblock %}
 
-{% block content %}
+{% block contenido %}
 
 
-    <div class="container-fluid" data-aos="fade" data-aos-delay="500">
-      <div class="row">
-        <div class="col-lg-4">
-
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Censar</h2>
-
-             
-
-              
-            </div>
-            <img src="{% static 'VerificacionesApp/images/mapa.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-
-        </div>
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Ver</h2>
-              <a href="" class="btn btn-outline-white py-2 px-4">Ver últimos arboles</a>
-            </div>
-            <img src="{% static 'VerificacionesApp/images/mapa.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="image-wrap-2">
-            <div class="image-info">
-              <h2 class="mb-3">Mapa</h2>
-              <a href="" class="btn btn-outline-white py-2 px-4">¿Dónde están?</a>
-            </div>
-            <img src="{% static 'VerificacionesApp/images/mapa.jpg' %}" alt="Image" class="img-fluid">
-          </div>
-        </div>
-
-        
-
-      </div>
-    </div>
 
 
 {% endblock %}
