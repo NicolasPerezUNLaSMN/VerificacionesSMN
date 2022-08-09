@@ -145,8 +145,6 @@ MEDIA_ROOT =  BASE_DIR / 'media'
 
 MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoibnlrb2xhaXBlcmV6dmVsZXoiLCJhIjoiY2tsY3RmZzVnMGw0YTJvb2J1Mms0cmdsaiJ9.gBoPfZ4934PdEl-OFZdajg"
 
-#Colores aleatorios
-DATA_COLORES= ["blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink"]
 
 
 #Esto funciona misticamente!!!!!!

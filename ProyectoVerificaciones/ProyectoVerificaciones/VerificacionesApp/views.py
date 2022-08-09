@@ -1,3 +1,4 @@
+from cgitb import text
 from django.shortcuts import render
 
 from django.forms import modelformset_factory
@@ -7,13 +8,43 @@ from .forms import ImageForm, EventoFormulario
 from ProyectoVerificaciones.settings import MAPBOX_ACCESS_TOKEN
 
 # Create your views here.
-
+from django.core import serializers
 
 def inicio(request):
 
 
 
     return render(request, "VerificacionesApp/index.html")
+
+def pruebaMapa(request):
+
+    
+    
+    eventos= Evento.objects.all()
+    maximo = len(eventos)
+    print(maximo)
+    elemento = 0
+    textoParaJson = '['
+    
+    for e in eventos:
+        #propiedades
+        textoParaJson += '{"type": "Feature", "properties": {'
+        textoParaJson += f'"popupContent":"{e.descripcion}"' 
+        textoParaJson += '}, "geometry": { "type": "Point", "coordinates": ['
+        textoParaJson += f'{e.long} , {e.lat} ]'
+        textoParaJson += '} }'
+        
+        elemento = elemento +1
+        if elemento < maximo:
+            textoParaJson +=  ','
+        
+        
+    textoParaJson += ']'
+    
+    
+
+    
+    return render(request, "VerificacionesApp/pruebaMapa.html",{"textoParaJson":textoParaJson})
 
 
 
@@ -22,7 +53,7 @@ def nuevoEvento(request):
    
     
 
-    ImageFormSet = modelformset_factory(Imagen, form=ImageForm, extra=10, min_num= 1, )
+    ImageFormSet = modelformset_factory(Imagen, form=ImageForm, extra=10, min_num= 0, )
     
     mensajeError = 'Completar los campos marcados con * y enviar una foto como mínimo'
 

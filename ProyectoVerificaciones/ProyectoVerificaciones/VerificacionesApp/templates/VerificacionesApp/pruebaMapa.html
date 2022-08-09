@@ -1,0 +1,55 @@
+{% extends "VerificacionesApp/padre.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block titulo %}
+<title>Probando mapa &mdash; :) </title>
+{% endblock %}
+
+
+{% block contenido %}
+
+
+<div id="map" style="width: 600px; height: 400px;"></div>
+
+{% block js %}
+<script>
+
+	var map = L.map('map').setView([-34.3, -67.2], 4);
+
+	var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+
+	
+
+	
+
+
+
+
+   
+
+            function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+        }
+
+            var geojsonFeature = {{textoParaJson|safe}};
+
+            L.geoJSON(geojsonFeature, {
+                onEachFeature: onEachFeature
+            }).addTo(map);
+
+</script>
+{% endblock js %}
+
+
+{% endblock %}

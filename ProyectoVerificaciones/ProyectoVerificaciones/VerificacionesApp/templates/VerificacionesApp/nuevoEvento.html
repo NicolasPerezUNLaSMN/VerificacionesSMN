@@ -19,23 +19,45 @@
            
 
 
-            <form  action="" method="POST" enctype="multipart/form-data" >  <!--Cuidado con la info automatica-->
+            <form  name="id_form" action="" method="POST" enctype="multipart/form-data" >  <!--Cuidado con la info automatica-->
 
               {% csrf_token %}
 
              
 
                     {{ miFormulario.as_p }}
-              
-              
+                   
+                   <!-- Lo que quiero modificar 
+                    <input type="number" name="long" class="form-control" step="any" required id="id_long">-->
+
+                    <div id="map" ></div>
+        
+
+                    <div id="accordion-three" class="accordion">
+                      <div class="card">
+                          <div class="card-header">
+                              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4"><i class="fa" aria-hidden="true"></i> Agregar imagenes</h5>
+                          </div>
+                          <div id="collapseOne4" class="collapse" data-parent="#accordion-three">
+                              <div class="card-body">
 
 
-                   {{ formset.management_form }}
-                    {% for form in formset %}
+                                {{ formset.management_form }}
+                                {% for form in formset %}
+            
+                                {{ form.as_p }}
+                                
+                                {% endfor %}
 
-                    {{ form.as_p }}
-                    
-                    {% endfor %}
+
+                              </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+
+
+                   
 
             
     
@@ -43,7 +65,8 @@
 
               <div >
                 <div >
-                  <input type="submit" value="Enviar datos" >
+                  <button type="submit" value="Enviar datos" class="btn mb-1 btn-rounded btn-success">Enviar</button>
+                  
                 </div>
               </div>
             
@@ -56,7 +79,37 @@
 
 
 
+            <script>
 
+              var map = L.map('map').setView([-34.3, -67.2], 4);
+            
+              var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+              }).addTo(map);
+            
+              
+            
+              
+            
+            
+              var popup = L.popup()
+                
+            
+              function onMapClick(e) {
+                popup
+                  .setLatLng(e.latlng)
+                  .setContent("Latitud: " +e.latlng.lat.toString() + ", Longitud:   " +e.latlng.lng.toString() )
+                  
+                  .openOn(map);
+
+                  document.id_form.long.value =e.latlng.lng.toString()
+                  document.id_form.lat.value =e.latlng.lat.toString()
+              }
+            
+              map.on('click', onMapClick);
+            
+            </script>
     
     
  {% endblock %}
