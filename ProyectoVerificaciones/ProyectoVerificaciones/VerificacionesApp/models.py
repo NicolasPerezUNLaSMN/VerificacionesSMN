@@ -1,5 +1,6 @@
 
 from django.template.defaultfilters import slugify
+from datetime import datetime
 
 
 from django.db import models
@@ -9,8 +10,7 @@ from django.db import models
 
 
 class Evento(models.Model):
-    
-
+   
     creacion= models.DateTimeField(auto_now_add=True)
     
     #Sobre el evento
@@ -35,10 +35,13 @@ class Evento(models.Model):
 
     def __str__(self):
         return f"{self.fechaDelEvento} --  {self.tipoEvento} -- {self.localidadAfectada} -- {self.nombreFuente}"
-    
+     
+    def paraElPopUp(self):
+        return f"Localidad: {self.localidadAfectada} el {self.fechaDelEvento}<br>Noticia: <a href='{self.linkDireccion}'>link<a><br>Estado del SAT: {self.color} - {self.tipo} - {self.areaPimetAfectada}<br>Evento: {self.tipoEvento}"
+
     
 def get_image_filename(instance, filename):
-    title =  'titulo'
+    title =  datetime.now()
     slug = slugify(title)
     return "imagenesEventos/%s-%s" % (slug, filename)  
     

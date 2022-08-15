@@ -76,10 +76,22 @@ WSGI_APPLICATION = 'ProyectoVerificaciones.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+ #       'NAME': BASE_DIR / 'db.sqlite3',
+ #   }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'verificaciones',
+        'USER': 'postgres',
+        'PASSWORD':'root',
+        'HOST':'127.0.0.1',
+        'DATABASE_PORT':'5432',
     }
 }
 
@@ -133,8 +145,6 @@ MEDIA_ROOT =  BASE_DIR / 'media'
 
 MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoibnlrb2xhaXBlcmV6dmVsZXoiLCJhIjoiY2tsY3RmZzVnMGw0YTJvb2J1Mms0cmdsaiJ9.gBoPfZ4934PdEl-OFZdajg"
 
-#Colores aleatorios
-DATA_COLORES= ["blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink","blue","black","brown","red","yellow","green","orange","beige","turquoise","pink"]
 
 
 #Esto funciona misticamente!!!!!!
