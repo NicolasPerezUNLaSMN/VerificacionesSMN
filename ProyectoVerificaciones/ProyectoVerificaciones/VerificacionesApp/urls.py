@@ -7,11 +7,12 @@ urlpatterns = [
     
     path('inicio', views.inicio, name="Inicio"),
     path('nuevoEvento', views.nuevoEvento, name="NuevoEvento"),
-    path('pruebaMapa', views.pruebaMapa, name="PruebaMapa"),
+    path('todosLosEventos', views.todosLosEventos, name="TodosLosEventos"),
+    path('eventosPorFecha', views.eventosPorFecha, name="EventosPorFecha"),
+    path('eventosEntreFechas', views.eventosEntreFechas, name="EventosEntreFechas"),
+   
   
  
-    
-
     
 
 ]

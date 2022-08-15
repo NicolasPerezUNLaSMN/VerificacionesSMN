@@ -16,7 +16,89 @@ def inicio(request):
 
     return render(request, "VerificacionesApp/index.html")
 
-def pruebaMapa(request):
+
+def eventosEntreFechas(request):
+
+    if request.method == "POST":
+                
+                
+                
+                fechaDesde = request.POST["fechaDesde"]
+                fechaHasta = request.POST["fechaHasta"]
+                
+                eventos= Evento.objects.filter(fechaDelEvento__range = [fechaDesde, fechaHasta])
+                maximo = len(eventos)
+                print(maximo)
+                elemento = 0
+                textoParaJson = '['
+                
+                for e in eventos:
+                    #propiedades
+                    textoParaJson += '{"type": "Feature", "properties": {'
+                    textoParaJson += f'"popupContent":"{e.paraElPopUp()}"' 
+                    textoParaJson += '}, "geometry": { "type": "Point", "coordinates": ['
+                    textoParaJson += f'{e.long} , {e.lat} ]'
+                    textoParaJson += '} }'
+                    
+                    elemento = elemento +1
+                    if elemento < maximo:
+                        textoParaJson +=  ','
+                    
+                    
+                textoParaJson += ']'
+                
+                
+
+                
+                return render(request, "VerificacionesApp/todosLosEventos.html",{"textoParaJson":textoParaJson})
+            
+            
+    else:
+        
+        return render(request, "VerificacionesApp/elegirFechas.html")
+    
+    
+
+def eventosPorFecha(request):
+
+    if request.method == "POST":
+                
+                
+                
+                fecha = request.POST["fecha"]
+                
+                eventos= Evento.objects.filter(fechaDelEvento = fecha)
+                maximo = len(eventos)
+                print(maximo)
+                elemento = 0
+                textoParaJson = '['
+                
+                for e in eventos:
+                    #propiedades
+                    textoParaJson += '{"type": "Feature", "properties": {'
+                    textoParaJson += f'"popupContent":"{e.paraElPopUp()}"' 
+                    textoParaJson += '}, "geometry": { "type": "Point", "coordinates": ['
+                    textoParaJson += f'{e.long} , {e.lat} ]'
+                    textoParaJson += '} }'
+                    
+                    elemento = elemento +1
+                    if elemento < maximo:
+                        textoParaJson +=  ','
+                    
+                    
+                textoParaJson += ']'
+                
+                
+
+                
+                return render(request, "VerificacionesApp/todosLosEventos.html",{"textoParaJson":textoParaJson})
+            
+            
+    else:
+        
+        return render(request, "VerificacionesApp/elegirFecha.html")
+
+def todosLosEventos(request):
 
     
     
@@ -27,9 +109,22 @@ def pruebaMapa(request):
     textoParaJson = '['
     
     for e in eventos:
+        
+        #Imagenes del evento
+        textoImagenes = ""
+        imagenes = Imagen.objects.filter(evento = e.id)
+        
+        #Si tiene aunque sea una imagen
+        if len(imagenes)!= 0:
+                textoImagenes += "<h2>Imagenes:<\h2>"
+                #recorro las imagenes
+                for imagen in imagenes:
+                    
+                    textoImagenes += f"<img src='{imagen.image.url}'  width='100%' ><br>"
+        print(textoImagenes)
         #propiedades
         textoParaJson += '{"type": "Feature", "properties": {'
-        textoParaJson += f'"popupContent":"{e.descripcion}"' 
+        textoParaJson += f'"popupContent":"{e.paraElPopUp()}<br>{textoImagenes}"' 
         textoParaJson += '}, "geometry": { "type": "Point", "coordinates": ['
         textoParaJson += f'{e.long} , {e.lat} ]'
         textoParaJson += '} }'
@@ -44,7 +139,7 @@ def pruebaMapa(request):
     
 
     
-    return render(request, "VerificacionesApp/pruebaMapa.html",{"textoParaJson":textoParaJson})
+    return render(request, "VerificacionesApp/todosLosEventos.html",{"textoParaJson":textoParaJson})
 
 
 

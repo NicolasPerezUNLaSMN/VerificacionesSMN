@@ -1,0 +1,77 @@
+{% extends "VerificacionesApp/padre.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block titulo %}
+<title>Selección de fecha &mdash; :) </title>
+{% endblock %}
+
+
+{% block contenido %}
+
+
+
+ <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                         <div class="card">
+                          
+                            <div class="card-body">
+                                <h4 class="card-title">¿Qué de fecha desea los eventos?</h4>
+           
+
+
+            <form   action="" method="POST" >  
+
+              {% csrf_token %}
+
+             
+               <div class="row form-material">
+                    <div class="col-md-6">
+                        <label class="m-t-20">Seleccionar la fecha de los eventos:</label>
+                        <input type="text" class="form-control" placeholder="AAAA-MM-DD" name="fecha" id="mdate" >
+                        
+                        
+                    </div>
+
+
+
+                
+            
+
+                </div >
+
+
+               
+                
+                  <input class="btn btn-success" type="submit" value="Enviar" />
+                  
+                  
+
+              
+         
+
+
+            </form>
+
+
+          </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            
+    
+    
+ {% endblock %}
+
+
+
+
+

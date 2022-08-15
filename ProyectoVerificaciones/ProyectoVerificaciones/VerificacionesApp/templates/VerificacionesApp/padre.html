@@ -47,7 +47,7 @@
 	<style>
 	
 		.leaflet-container {
-			height: 400px;
+			height: 700px;
 			width: 100%;
 		
 		}
@@ -129,6 +129,43 @@
         ***********************************-->
         <div class="nk-sidebar">           
             <div class="nk-nav-scroll">
+
+
+                    <ul class="metismenu" id="menu">
+                    <li class="nav-label">Cargar evento</li>
+                    
+                    <li>
+                        <a  href="{% url 'NuevoEvento' %}" aria-expanded="false">
+                            <i class="menu-icon"></i><span class="nav-text">Agregar evento</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-label">Fechas</li>
+                    
+                    <li>
+                        <a  href="{% url 'EventosPorFecha' %}" aria-expanded="false">
+                            <i class="menu-icon"></i><span class="nav-text">Buscar una fecha</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a  href="{% url 'EventosEntreFechas' %}" aria-expanded="false">
+                            <i class="menu-icon"></i><span class="nav-text">Buscar entre fechas</span>
+                        </a>
+                    </li>
+                    
+                   
+                   
+                    
+
+
+                    
+                    
+                    
+                   
+                </ul>
+
+
                 
             </div>
         </div>

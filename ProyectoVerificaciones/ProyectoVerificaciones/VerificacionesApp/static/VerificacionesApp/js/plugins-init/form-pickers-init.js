@@ -7,6 +7,10 @@
         weekStart: 0,
         time: false
     });
+    $('#mdate2').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        time: false
+    });
     $('#timepicker').bootstrapMaterialDatePicker({
         format: 'HH:mm',
         time: true,

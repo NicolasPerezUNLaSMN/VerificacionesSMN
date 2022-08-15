@@ -1,0 +1,107 @@
+{% extends "VerificacionesApp/padre.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block titulo %}
+<title>Selección de fecha &mdash; :) </title>
+{% endblock %}
+
+
+{% block contenido %}
+
+
+
+
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                         <div class="card">
+                            
+                            <div class="card-body">
+                                <h4 class="card-title">¿Entre qué fechas quiere los eventos?</h4> 
+
+
+            <form   action="" method="POST" >  
+
+              {% csrf_token %}
+
+             
+               <div class="row form-material">
+
+                        <div class="col-md-6">
+                          <label class="m-t-20">Fecha desde:</label>
+                          <input type="text" class="form-control" placeholder="AAAA-MM-DD" name="fechaDesde" id="mdate">
+                        </div>
+
+
+                        <div class="col-md-6">
+                          <label class="m-t-20">Fecha hasta::</label>
+                          <input type="text" class="form-control" placeholder="AAAA-MM-DD" name="fechaHasta" id="mdate2">
+                        </div>
+                        
+                       
+                   
+
+                <div >
+
+                 
+
+
+              
+                     <input class="btn btn-success" type="submit" value="Enviar" />
+                  
+               
+            
+
+              
+         
+
+
+            </form>
+
+        </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+    
+    
+ {% endblock %}
+
+
+
+
+
+
+        <!--
+          <script>
+            
+            
+
+            
+
+            
+            mapboxgl.accessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+            
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10',
+            center: [-64.03, -35.11],
+            zoom: 9,
+           
+           
+            });
+
+            
+
+               
+              </script>
+
+
+-->
